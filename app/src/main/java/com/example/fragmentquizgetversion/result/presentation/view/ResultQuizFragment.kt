@@ -1,4 +1,4 @@
-package com.example.fragmentquizgetversion
+package com.example.fragmentquizgetversion.result.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import com.example.fragmentquizgetversion.R
 import com.example.fragmentquizgetversion.databinding.FragmentResultQuizBinding
+import com.example.fragmentquizgetversion.question.domain.model.ResultModel
+import com.example.fragmentquizgetversion.question.presentation.view.QuestionFragment
 
 class ResultQuizFragment : Fragment() {
-    private lateinit var gameResult: Result
+    private lateinit var gameResultModel: ResultModel
 
     private var _binding: FragmentResultQuizBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("StartFragmentBinding == null")
@@ -23,9 +26,9 @@ class ResultQuizFragment : Fragment() {
         _binding = FragmentResultQuizBinding.inflate(inflater)
 
         parseArgs()
-        binding.resultText1.text = gameResult.list[0]
-        binding.resultText2.text = gameResult.list[1]
-        binding.resultText3.text = gameResult.list[2]
+        binding.resultText1.text = gameResultModel.list[0]
+        binding.resultText2.text = gameResultModel.list[1]
+        binding.resultText3.text = gameResultModel.list[2]
 
         return binding.root
     }
@@ -57,12 +60,12 @@ class ResultQuizFragment : Fragment() {
         requireActivity().supportFragmentManager.popBackStack()
         requireActivity().supportFragmentManager.popBackStack()
         requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, QuestionFragment.newInstance())
+            .replace(R.id.fragment_container, QuestionFragment())
             .commit()
     }
 
     private fun parseArgs() {
-        gameResult = requireArguments().getSerializable(KEY_GAME_RESULT) as Result
+        gameResultModel = requireArguments().getSerializable(KEY_GAME_RESULT) as ResultModel
     }
 
     override fun onDestroy() {
@@ -74,10 +77,10 @@ class ResultQuizFragment : Fragment() {
     companion object {
         private const val KEY_GAME_RESULT = "game_result"
 
-        fun newInstance(gameResult: Result): ResultQuizFragment {
+        fun newInstance(gameResultModel: ResultModel): ResultQuizFragment {
             return ResultQuizFragment().apply {
                 arguments = Bundle().apply {
-                    putSerializable(KEY_GAME_RESULT, gameResult)
+                    putSerializable(KEY_GAME_RESULT, gameResultModel)
                 }
             }
         }

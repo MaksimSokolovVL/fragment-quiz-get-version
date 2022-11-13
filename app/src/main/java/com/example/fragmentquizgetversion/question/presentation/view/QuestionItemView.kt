@@ -1,4 +1,4 @@
-package com.example.fragmentquizgetversion
+package com.example.fragmentquizgetversion.question.presentation.view
 
 import android.content.Context
 
@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.fragmentquizgetversion.databinding.MyCustomViewBinding
 
 
-class CustomView
+class QuestionItemView
 @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
