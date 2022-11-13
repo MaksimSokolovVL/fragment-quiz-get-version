@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.fragmentquizgetversion.databinding.MyCustomViewBinding
 
 
-class CustomView
+class ResultModel
 @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,

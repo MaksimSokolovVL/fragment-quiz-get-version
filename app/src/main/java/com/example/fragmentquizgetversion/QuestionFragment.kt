@@ -63,24 +63,24 @@ class QuestionFragment : Fragment() {
         }
 
 
-        fun checkedChangeRadiosButton(nameCustomView: CustomView, numberCustomView: Int) {
+        fun checkedChangeRadiosButton(nameResultModel: ResultModel, numberCustomView: Int) {
 
-            nameCustomView.getBinding().questionGroup.setOnCheckedChangeListener { _, checkedId ->
+            nameResultModel.getBinding().questionGroup.setOnCheckedChangeListener { _, checkedId ->
 //                var id = nameCustomView.getBinding().questionGroup.checkedRadioButtonId
                 when (checkedId) {
-                    nameCustomView.getBinding().firstAnswer.id -> {
+                    nameResultModel.getBinding().firstAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[0])
                         gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[0]
                     }
-                    nameCustomView.getBinding().secondAnswer.id -> {
+                    nameResultModel.getBinding().secondAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[1])
                         gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[1]
                     }
-                    nameCustomView.getBinding().thirdAnswer.id -> {
+                    nameResultModel.getBinding().thirdAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[2])
                         gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[2]
                     }
-                    nameCustomView.getBinding().fourthAnswer.id -> {
+                    nameResultModel.getBinding().fourthAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[3])
                         gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[3]
                     }
