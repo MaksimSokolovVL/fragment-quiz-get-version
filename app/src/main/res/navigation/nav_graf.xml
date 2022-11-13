@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/questionFragment"
-        android:name="com.example.fragmentquizgetversion.QuestionFragment"
+        android:name="com.example.fragmentquizgetversion.question.presentation.view.QuestionFragment"
         android:label="fragment_question"
         tools:layout="@layout/fragment_question" >
         <action
