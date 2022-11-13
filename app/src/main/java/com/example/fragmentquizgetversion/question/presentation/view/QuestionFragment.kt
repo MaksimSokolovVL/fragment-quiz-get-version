@@ -13,6 +13,7 @@ import com.example.fragmentquizgetversion.result.presentation.viewmodel.ResultMo
 import com.example.fragmentquizgetversion.result.presentation.view.ResultQuizFragment
 import com.example.fragmentquizgetversion.question.data.quiz.Quiz
 import com.example.fragmentquizgetversion.question.data.quiz.QuizStorage
+import com.example.fragmentquizgetversion.start.presentation.view.StartFragment
 
 private val quiz: Quiz = QuizStorage.getQuiz(QuizStorage.Locale.Ru)
 
@@ -57,15 +58,7 @@ class QuestionFragment : Fragment() {
             }
         }
 
-
-        binding.buttonBack.setOnClickListener {
-            launchStartFragment()
-        }
-
-        binding.buttonResult.setOnClickListener {
-            launchResultQuiz(gameResultModel)
-        }
-
+        initView()
 
         fun checkedChangeRadiosButton(
             nameQuestionItemView: QuestionItemView,
@@ -102,8 +95,16 @@ class QuestionFragment : Fragment() {
         checkedChangeRadiosButton(firstCustomView, 0)
         checkedChangeRadiosButton(secondCustomView, 1)
         checkedChangeRadiosButton(thirdCustomView, 2)
+    }
 
+    private fun initView(){
+        binding.buttonBack.setOnClickListener {
+            launchStartFragment()
+        }
 
+        binding.buttonResult.setOnClickListener {
+            launchResultQuiz(gameResultModel)
+        }
     }
 
     private fun launchStartFragment() {
@@ -127,12 +128,5 @@ class QuestionFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
 
-        const val NAME = "QuestionFragment"
-
-        fun newInstance(): QuestionFragment {
-            return QuestionFragment()
-        }
-    }
 }

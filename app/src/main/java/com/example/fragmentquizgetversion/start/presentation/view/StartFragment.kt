@@ -27,12 +27,16 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //раьота с view
         super.onViewCreated(view, savedInstanceState)
 
+        initView()
+    }
+
+    private fun initView() {
         binding.buttonStart.setOnClickListener {
             launchQuestionFragment()
         }
     }
 
-    private fun launchQuestionFragment(){
+    private fun launchQuestionFragment() {
         findNavController().navigate(R.id.action_startFragment_to_questionFragment)
     }
 
@@ -40,6 +44,10 @@ class StartFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        const val NAME = "StartFragment"
     }
 
 
