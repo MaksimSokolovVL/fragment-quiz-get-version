@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuestionFragment">
-
-
+    tools:context=".question.presentation.view.QuestionFragment"
+    android:id="@+id/questionFragment">
 
 
         <ScrollView
@@ -19,7 +18,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.example.fragmentquizgetversion.ResultModel
+                <com.example.fragmentquizgetversion.question.presentation.view.QuestionItemView
                     android:id="@+id/custom_view_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -27,7 +26,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.example.fragmentquizgetversion.ResultModel
+                <com.example.fragmentquizgetversion.question.presentation.view.QuestionItemView
                     android:id="@+id/custom_view_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -35,7 +34,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/custom_view_1" />
 
-                <com.example.fragmentquizgetversion.ResultModel
+                <com.example.fragmentquizgetversion.question.presentation.view.QuestionItemView
                     android:id="@+id/custom_view_3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -44,7 +43,7 @@
                     app:layout_constraintTop_toBottomOf="@id/custom_view_2">
 
 
-                </com.example.fragmentquizgetversion.ResultModel>
+                </com.example.fragmentquizgetversion.question.presentation.view.QuestionItemView>
             </LinearLayout>
         </ScrollView>
 

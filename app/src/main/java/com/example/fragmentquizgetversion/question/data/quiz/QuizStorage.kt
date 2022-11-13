@@ -1,4 +1,4 @@
-package com.example.fragmentquizgetversion.quiz
+package com.example.fragmentquizgetversion.question.data.quiz
 
 object QuizStorage {
     fun getQuiz(locale: Locale): Quiz = when (locale) {

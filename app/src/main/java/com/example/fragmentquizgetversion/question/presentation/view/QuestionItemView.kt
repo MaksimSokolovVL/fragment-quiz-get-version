@@ -1,4 +1,4 @@
-package com.example.fragmentquizgetversion
+package com.example.fragmentquizgetversion.question.presentation.view
 
 import android.content.Context
 
@@ -6,18 +6,18 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.example.fragmentquizgetversion.databinding.MyCustomViewBinding
+import com.example.fragmentquizgetversion.databinding.QuestionItemViewBinding
 
 
-class ResultModel
+class QuestionItemView
 @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAtte: Int = 0
 ) : LinearLayout(context, attrs, defStyleAtte) {
-    private val binding = MyCustomViewBinding.inflate(LayoutInflater.from(context))
+    private val binding = QuestionItemViewBinding.inflate(LayoutInflater.from(context))
 
-    fun getBinding(): MyCustomViewBinding {
+    fun getBinding(): QuestionItemViewBinding {
         return binding
     }
 

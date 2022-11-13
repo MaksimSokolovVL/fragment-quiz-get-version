@@ -1,4 +1,4 @@
-package com.example.fragmentquizgetversion
+package com.example.fragmentquizgetversion.question.presentation.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,15 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.example.fragmentquizgetversion.R
 import com.example.fragmentquizgetversion.databinding.FragmentQuestionBinding
-import com.example.fragmentquizgetversion.quiz.Quiz
-import com.example.fragmentquizgetversion.quiz.QuizStorage
+import com.example.fragmentquizgetversion.result.presentation.viewmodel.ResultModel
+import com.example.fragmentquizgetversion.result.presentation.view.ResultQuizFragment
+import com.example.fragmentquizgetversion.question.data.quiz.Quiz
+import com.example.fragmentquizgetversion.question.data.quiz.QuizStorage
 
 private val quiz: Quiz = QuizStorage.getQuiz(QuizStorage.Locale.Ru)
 
 class QuestionFragment : Fragment() {
 
-    private val gameResult = Result()
+    private val gameResultModel = ResultModel()
 
     private var _binding: FragmentQuestionBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("StartFragmentBinding == null")
@@ -59,30 +63,37 @@ class QuestionFragment : Fragment() {
         }
 
         binding.buttonResult.setOnClickListener {
-            launchResultQuiz(gameResult)
+            launchResultQuiz(gameResultModel)
         }
 
 
-        fun checkedChangeRadiosButton(nameResultModel: ResultModel, numberCustomView: Int) {
+        fun checkedChangeRadiosButton(
+            nameQuestionItemView: QuestionItemView,
+            numberCustomView: Int
+        ) {
 
-            nameResultModel.getBinding().questionGroup.setOnCheckedChangeListener { _, checkedId ->
+            nameQuestionItemView.getBinding().questionGroup.setOnCheckedChangeListener { _, checkedId ->
 //                var id = nameCustomView.getBinding().questionGroup.checkedRadioButtonId
                 when (checkedId) {
-                    nameResultModel.getBinding().firstAnswer.id -> {
+                    nameQuestionItemView.getBinding().firstAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[0])
-                        gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[0]
+                        gameResultModel.list[numberCustomView] =
+                            quiz.questions[numberCustomView].feedback[0]
                     }
-                    nameResultModel.getBinding().secondAnswer.id -> {
+                    nameQuestionItemView.getBinding().secondAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[1])
-                        gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[1]
+                        gameResultModel.list[numberCustomView] =
+                            quiz.questions[numberCustomView].feedback[1]
                     }
-                    nameResultModel.getBinding().thirdAnswer.id -> {
+                    nameQuestionItemView.getBinding().thirdAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[2])
-                        gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[2]
+                        gameResultModel.list[numberCustomView] =
+                            quiz.questions[numberCustomView].feedback[2]
                     }
-                    nameResultModel.getBinding().fourthAnswer.id -> {
+                    nameQuestionItemView.getBinding().fourthAnswer.id -> {
                         showToast(quiz.questions[numberCustomView].feedback[3])
-                        gameResult.list[numberCustomView] = quiz.questions[numberCustomView].feedback[3]
+                        gameResultModel.list[numberCustomView] =
+                            quiz.questions[numberCustomView].feedback[3]
                     }
                 }
             }
@@ -96,20 +107,16 @@ class QuestionFragment : Fragment() {
     }
 
     private fun launchStartFragment() {
-
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, StartFragment.newInstance())
-            .commit()
+        findNavController().navigate(R.id.action_questionFragment_to_startFragment)
     }
 
-    private fun launchResultQuiz(gameResult:Result) {
-
-        requireActivity().supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, ResultQuizFragment.newInstance(gameResult))
-            .addToBackStack(null)
-            .commit()
-
+    private fun launchResultQuiz(gameResultModel: ResultModel) {
+        val args = Bundle().apply {
+            putSerializable(ResultQuizFragment.KEY_GAME_RESULT, gameResultModel)
+        }
+        findNavController().navigate(R.id.action_questionFragment_to_resultQuizFragment, args)
     }
+
     private fun showToast(message: String) {
         Toast.makeText(this.context, message, Toast.LENGTH_SHORT).show()
     }

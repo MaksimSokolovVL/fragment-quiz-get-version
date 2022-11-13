@@ -1,4 +1,4 @@
-package com.example.fragmentquizgetversion.quiz
+package com.example.fragmentquizgetversion.question.data.quiz
 
 class Question(
     val question:String,

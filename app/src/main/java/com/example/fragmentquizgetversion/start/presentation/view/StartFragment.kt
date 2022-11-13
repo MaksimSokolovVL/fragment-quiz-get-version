@@ -1,16 +1,18 @@
-package com.example.fragmentquizgetversion
+package com.example.fragmentquizgetversion.start.presentation.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.fragmentquizgetversion.R
+import com.example.fragmentquizgetversion.databinding.FragmentStartBinding
 
-import com.example.fragmentquizgetversion.databinding.StartFragmentBinding
 
 class StartFragment : Fragment() {
 
-    private var _binding: StartFragmentBinding? = null
+    private var _binding: FragmentStartBinding? = null
     private val binding get() = _binding ?: throw RuntimeException("StartFragmentBinding == null")
 
     override fun onCreateView(  //из макета создать view
@@ -18,7 +20,7 @@ class StartFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = StartFragmentBinding.inflate(inflater)
+        _binding = FragmentStartBinding.inflate(inflater)
         return binding.root
     }
 
@@ -27,29 +29,17 @@ class StartFragment : Fragment() {
 
         binding.buttonStart.setOnClickListener {
             launchQuestionFragment()
-//            findNavController().navigate(R.id.action_startFragment_to_questionFragment)
         }
-
-
     }
 
-    private fun launchQuestionFragment() {
-        requireActivity().supportFragmentManager.beginTransaction()
-            .addToBackStack(QuestionFragment.NAME)
-            .replace(R.id.fragment_container, QuestionFragment.newInstance()).commit()
+    private fun launchQuestionFragment(){
+        findNavController().navigate(R.id.action_startFragment_to_questionFragment)
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    companion object {
-
-        fun newInstance(): StartFragment {
-            return StartFragment()
-        }
     }
 
 
