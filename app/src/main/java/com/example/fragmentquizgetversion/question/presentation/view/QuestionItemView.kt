@@ -5,8 +5,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
+import android.widget.RadioGroup
 import android.widget.TextView
 import com.example.fragmentquizgetversion.databinding.QuestionItemViewBinding
+import com.example.fragmentquizgetversion.question.data.quiz.Quiz
 
 
 class QuestionItemView
@@ -27,15 +29,8 @@ class QuestionItemView
     }
 
 
-    fun setQuestions(numberQuestion: Int, text: String) {
-        when (numberQuestion) {
-            0 -> binding.firstAnswer.text = text
-            1 -> binding.secondAnswer.text = text
-            2 -> binding.thirdAnswer.text = text
-            3 -> binding.fourthAnswer.text = text
-            else  -> error("$numberQuestion  -> there is no such number")
-        }
-    }
+
+
 
     fun setQuestions2(answersList: List<String>) {
         for (i in 0..answersList.lastIndex){
@@ -49,6 +44,9 @@ class QuestionItemView
     }
 
 
+    fun getRadioGroup(): RadioGroup {
+        return binding.questionGroup
+    }
 
     fun getQuestions(numberQuestion: Int): TextView {
         return when (numberQuestion) {

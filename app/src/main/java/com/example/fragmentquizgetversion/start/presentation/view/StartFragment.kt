@@ -26,7 +26,6 @@ class StartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //раьота с view
         super.onViewCreated(view, savedInstanceState)
-
         initView()
     }
 
@@ -45,10 +44,4 @@ class StartFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
-    companion object {
-        const val NAME = "StartFragment"
-    }
-
-
 }

@@ -44,5 +44,8 @@
             app:destination="@id/questionFragment"
             app:popUpTo="@id/resultQuizFragment"
             app:popUpToInclusive="true" />
+        <argument
+            android:name="resultQuizModel"
+            app:argType="com.example.fragmentquizgetversion.result.presentation.viewmodel.ResultModel" />
     </fragment>
 </navigation>

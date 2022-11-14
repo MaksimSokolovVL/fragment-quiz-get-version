@@ -1,12 +1,17 @@
 package com.example.fragmentquizgetversion.question.presentation.view
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
+import androidx.navigation.navOptions
 import com.example.fragmentquizgetversion.R
 import com.example.fragmentquizgetversion.databinding.FragmentQuestionBinding
 import com.example.fragmentquizgetversion.result.presentation.viewmodel.ResultModel
@@ -33,12 +38,25 @@ class QuestionFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //раьота с view
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //работа с view
         super.onViewCreated(view, savedInstanceState)
 
         val firstCustomView = binding.customView1
         val secondCustomView = binding.customView2
         val thirdCustomView = binding.customView3
+
+
+        //**************
+        val radioGroup = binding.customView1.getRadioGroup()
+        val radioButton1 = RadioButton(context)
+        radioButton1.text=quiz.questions[0].question
+        radioGroup.addView(radioButton1)
+
+        val d3 = quiz.questions.size
+        val question = quiz.questions[0]
+        val f4 = question.answers.size
+//****************
+
 
         for (i in 0..quiz.questions.lastIndex) {
             val question = quiz.questions[i]
@@ -112,10 +130,11 @@ class QuestionFragment : Fragment() {
     }
 
     private fun launchResultQuiz(gameResultModel: ResultModel) {
-        val args = Bundle().apply {
-            putSerializable(ResultQuizFragment.KEY_GAME_RESULT, gameResultModel)
-        }
-        findNavController().navigate(R.id.action_questionFragment_to_resultQuizFragment, args)
+//        val args = Bundle().apply {
+//            putSerializable(ResultQuizFragment.KEY_GAME_RESULT, gameResultModel)
+//        }
+//        findNavController().navigate(R.id.action_questionFragment_to_resultQuizFragment, args, navOptions { this.anim {  } })
+        findNavController().navigate(QuestionFragmentDirections.actionQuestionFragmentToResultQuizFragment(gameResultModel))
     }
 
     private fun showToast(message: String) {
@@ -127,6 +146,4 @@ class QuestionFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
-
 }
