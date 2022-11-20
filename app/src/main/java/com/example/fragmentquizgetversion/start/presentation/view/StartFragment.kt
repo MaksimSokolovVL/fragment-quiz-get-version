@@ -50,11 +50,7 @@ class StartFragment : Fragment() {
         _binding = null
     }
 
-    companion object {
 
-        const val NAME = "StartFragment"
-
-    }
 
 
 }
