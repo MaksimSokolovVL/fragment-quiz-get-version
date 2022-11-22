@@ -9,41 +9,59 @@
         android:id="@+id/startFragment"
         android:name="com.example.fragmentquizgetversion.start.presentation.view.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
+        tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_questionFragment"
-            app:destination="@id/questionFragment" />
+            app:destination="@id/questionFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
         android:id="@+id/questionFragment"
         android:name="com.example.fragmentquizgetversion.question.presentation.view.QuestionFragment"
         android:label="fragment_question"
-        tools:layout="@layout/fragment_question" >
+        tools:layout="@layout/fragment_question">
         <action
             android:id="@+id/action_questionFragment_to_resultQuizFragment"
             app:destination="@id/resultQuizFragment"
             app:popUpTo="@id/questionFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_questionFragment_to_startFragment"
             app:destination="@id/startFragment"
             app:popUpTo="@id/resultQuizFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/resultQuizFragment"
         android:name="com.example.fragmentquizgetversion.result.presentation.view.ResultQuizFragment"
         android:label="fragment_result_quiz"
-        tools:layout="@layout/fragment_result_quiz" >
+        tools:layout="@layout/fragment_result_quiz">
         <action
             android:id="@+id/action_resultQuizFragment_to_startFragment"
-            app:destination="@id/startFragment" />
+            app:destination="@id/startFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_resultQuizFragment_to_questionFragment"
             app:destination="@id/questionFragment"
             app:popUpTo="@id/resultQuizFragment"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"/>
         <argument
             android:name="resultQuizModel"
             app:argType="com.example.fragmentquizgetversion.result.presentation.viewmodel.ResultModel" />

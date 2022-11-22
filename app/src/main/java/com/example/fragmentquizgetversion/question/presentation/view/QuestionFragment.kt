@@ -41,40 +41,27 @@ class QuestionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) { //работа с view
         super.onViewCreated(view, savedInstanceState)
 
-        val firstCustomView = binding.customView1
-        val secondCustomView = binding.customView2
-        val thirdCustomView = binding.customView3
-
-
-        //**************
-        val radioGroup = binding.customView1.getRadioGroup()
-        val radioButton1 = RadioButton(context)
-        radioButton1.text=quiz.questions[0].question
-        radioGroup.addView(radioButton1)
-
-        val d3 = quiz.questions.size
-        val question = quiz.questions[0]
-        val f4 = question.answers.size
-//****************
-
-
-        for (i in 0..quiz.questions.lastIndex) {
-            val question = quiz.questions[i]
-            when (i) {
-                0 -> {
-                    firstCustomView.getBinding().textViewOneQuestion.text = question.question
-                    firstCustomView.setQuestions2(question.answers)
-                }
-                1 -> {
-                    secondCustomView.getBinding().textViewOneQuestion.text = question.question
-                    secondCustomView.setQuestions2(question.answers)
-                }
-                2 -> {
-                    thirdCustomView.getBinding().textViewOneQuestion.text = question.question
-                    thirdCustomView.setQuestions2(question.answers)
-                }
-            }
-        }
+//        val firstCustomView = binding.customView1
+//        val secondCustomView = binding.customView2
+//        val thirdCustomView = binding.customView3
+//
+//        for (i in 0..quiz.questions.lastIndex) {
+//            val question = quiz.questions[i]
+//            when (i) {
+//                0 -> {
+//                    firstCustomView.getBinding().textViewOneQuestion.text = question.question
+//                    firstCustomView.setQuestions2(question.answers)
+//                }
+//                1 -> {
+//                    secondCustomView.getBinding().textViewOneQuestion.text = question.question
+//                    secondCustomView.setQuestions2(question.answers)
+//                }
+//                2 -> {
+//                    thirdCustomView.getBinding().textViewOneQuestion.text = question.question
+//                    thirdCustomView.setQuestions2(question.answers)
+//                }
+//            }
+//        }
 
         initView()
 
@@ -110,9 +97,9 @@ class QuestionFragment : Fragment() {
             }
         }
 
-        checkedChangeRadiosButton(firstCustomView, 0)
-        checkedChangeRadiosButton(secondCustomView, 1)
-        checkedChangeRadiosButton(thirdCustomView, 2)
+//        checkedChangeRadiosButton(firstCustomView, 0)
+//        checkedChangeRadiosButton(secondCustomView, 1)
+//        checkedChangeRadiosButton(thirdCustomView, 2)
     }
 
     private fun initView(){
@@ -130,10 +117,6 @@ class QuestionFragment : Fragment() {
     }
 
     private fun launchResultQuiz(gameResultModel: ResultModel) {
-//        val args = Bundle().apply {
-//            putSerializable(ResultQuizFragment.KEY_GAME_RESULT, gameResultModel)
-//        }
-//        findNavController().navigate(R.id.action_questionFragment_to_resultQuizFragment, args, navOptions { this.anim {  } })
         findNavController().navigate(QuestionFragmentDirections.actionQuestionFragmentToResultQuizFragment(gameResultModel))
     }
 

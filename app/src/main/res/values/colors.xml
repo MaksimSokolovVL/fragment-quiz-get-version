@@ -12,4 +12,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_color">#F3482A</color>
     <color name="toolbar_color">#D8543D</color>
+    <color name="ripple_color">#640978</color>
 </resources>
