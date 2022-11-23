@@ -28,11 +28,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="@id/constraint"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="@id/constraint"
-            app:layout_constraintTop_toBottomOf="@id/textViewOneQuestion"
-
-            >
+            app:layout_constraintTop_toBottomOf="@id/textViewOneQuestion">
 
             <RadioButton
                 android:id="@+id/firstAnswer"
@@ -46,17 +44,7 @@
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/button_color" />
 
-            <RadioButton
-                android:id="@+id/thirdAnswer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/button_color" />
 
-            <RadioButton
-                android:id="@+id/fourthAnswer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/button_color" />
         </RadioGroup>
 
 
