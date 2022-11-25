@@ -32,31 +32,14 @@ class QuestionItemView
 
 
 
-    fun setQuestions2(answersList: List<String>) {
-        for (i in 0..answersList.lastIndex){
-        when (i) {
-            0 -> binding.firstAnswer.text = answersList[i]
-            1 -> binding.secondAnswer.text = answersList[i]
-            2 -> binding.thirdAnswer.text = answersList[i]
-            3 -> binding.fourthAnswer.text = answersList[i]
-            else  -> error("${answersList[i]}  -> there is no such number")
-        }}
-    }
+
 
 
     fun getRadioGroup(): RadioGroup {
         return binding.questionGroup
     }
 
-    fun getQuestions(numberQuestion: Int): TextView {
-        return when (numberQuestion) {
-            0 -> binding.firstAnswer
-            1 -> binding.secondAnswer
-            2 -> binding.thirdAnswer
-            3 -> binding.fourthAnswer
-            else  -> error("$numberQuestion  -> there is no such number")
-        }
-    }
+
 
 
 }
